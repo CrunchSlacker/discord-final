@@ -1,3 +1,6 @@
+# Created by sn6uv
+# https://github.com/sn6uv/molmass/blob/master/molmass.py
+
 import sys
 from elements import elements
 
