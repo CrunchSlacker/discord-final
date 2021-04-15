@@ -19,7 +19,7 @@ async def on_message(message):
     # If discord message begins with -e, then execute molar mass / DA command
     if message.content.startswith('-e'):
         command = message.content.split()
-        da_embed_title = command[2] + command[3] + " of " + command[4] + " to " + command[-1] + "(" + command[-2] + ")"
+
 
         # Calculates molar mass and sends to user
         if command[1] == "molarM":
@@ -30,6 +30,7 @@ async def on_message(message):
 
         # Calculates DA of specified elements and sends to user
         elif command[1] == "DA":
+            da_embed_title = command[2] + command[3] + " of " + command[4] + " to " + command[-1] + "(" + command[2] + ")"
             embed_da = discord.Embed(title=da_embed_title, description=DAnalysis.DA(command), colour=0x3498db)
             await message.channel.send(embed=embed_da)
 
@@ -37,4 +38,4 @@ async def on_message(message):
             await message.channel.send("Invalid Command")
 
 
-client.run('ODMxMTk3Nzc1MDg5MzY5MTA1.YHRvQA.hraUmwO2yoVfG8ekKh1NwAb4-ek')
+client.run(os.environ['DISCORD_TOKEN'])
