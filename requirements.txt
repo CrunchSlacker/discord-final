@@ -1,1 +1,2 @@
 discord
+sigfig~=1.1.8
