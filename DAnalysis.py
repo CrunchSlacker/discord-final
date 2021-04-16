@@ -11,10 +11,12 @@ def DA(command):
 
     if starting_unit == 'g':  # Change grams to mols
         starting_mol = round(float(command[2]) / molarmass.calc_mass(command[4]), 2)
+    elif starting_unit == 'mol':
+        starting_mol = command[2]
 
     if ":" in command[5]:
         ratio = command[5].split(':')
-        desired_mol = starting_mol * (int(ratio[0]) / int(ratio[1]))
+        desired_mol = float(starting_mol) * (int(ratio[0]) / int(ratio[1]))
 
         if desired_unit == 'mol':
             final_result = desired_mol
