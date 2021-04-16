@@ -26,10 +26,8 @@ def DA(command):
             number = f'{final_result_sigfig:.2f}'
             print(number[-1])
             if number[-1] == "0":
-                print("yo")
                 return f'{final_result_sigfig:.2f}'
             else:
-                print("yoe")
                 return str(Chemistry.Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
             
         elif desired_unit == 'g':
@@ -40,10 +38,8 @@ def DA(command):
             number = f'{final_result_sigfig:.2f}'
             print(number[-1])
             if number[-1] == "0":
-                print("yo")
                 return f'{final_result_sigfig:.2f}'
             else:
-                print("yoe")
                 return str(Chemistry.Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
 
 
