@@ -23,7 +23,8 @@ async def on_message(message):
         # Calculates molar mass and sends to user
         if command[1] == "molarM":
             embed_molar_m = discord.Embed(title=str(command[2]) + " molar mass:",
-                                          description=str(round(Chemistry.molarmass.calc_mass(command[2]), 2)), color=0x3498db)
+                                          description=str(round(Chemistry.molarmass.calc_mass(command[2]), 2)),
+                                          color=0x3498db)
 
             await message.channel.send(embed=embed_molar_m)
 
@@ -38,4 +39,4 @@ async def on_message(message):
             await message.channel.send("Invalid Command")
 
 
-client.run('ODMxMTk3Nzc1MDg5MzY5MTA1.YHRvQA.hraUmwO2yoVfG8ekKh1NwAb4-ek')
+client.run(os.environ['DISCORD_TOKEN'])  # Token
