@@ -1,6 +1,6 @@
 import math
-import Chemistry.molarmass
-import Chemistry.Sfig
+import molarmass
+import Sfig
 
 
 def DA(command):
@@ -11,7 +11,7 @@ def DA(command):
     desired_element = command[-1]
 
     if starting_unit == 'g':  # Change grams to mols
-        starting_mol = round(float(command[2]) / Chemistry.molarmass.calc_mass(command[4]), 2)
+        starting_mol = round(float(command[2]) / molarmass.calc_mass(command[4]), 2)
     elif starting_unit == 'mol':
         starting_mol = command[2]
 
@@ -28,10 +28,10 @@ def DA(command):
             if number[-1] == "0":
                 return f'{final_result_sigfig:.2f}'
             else:
-                return str(Chemistry.Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
-            
+                return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
+
         elif desired_unit == 'g':
-            final_result = desired_mol * Chemistry.molarmass.calc_mass(desired_element)
+            final_result = desired_mol * molarmass.calc_mass(desired_element)
             sigfig = find_sigfigs(command[2])
             print(final_result)
             final_result_sigfig = round(final_result, sigfig - int(math.floor(math.log10(abs(final_result)))) - 1)
@@ -40,11 +40,11 @@ def DA(command):
             if number[-1] == "0":
                 return f'{final_result_sigfig:.2f}'
             else:
-                return str(Chemistry.Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
+                return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
 
 
 """
-Created by Bob
+Beginning of cited code
 https://stackoverflow.com/questions/8142676/python-counting-significant-digits
 """
 
@@ -74,3 +74,6 @@ def find_sigfigs(x):
             n[0] = n[0].rstrip('0')
         # pass it back to the beginning to be parsed
     return find_sigfigs('e'.join(n))
+
+
+"""End of cited code"""

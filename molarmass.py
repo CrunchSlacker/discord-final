@@ -1,28 +1,14 @@
-# Created by sn6uv
+# Beginning of cited code
 # https://github.com/sn6uv/molmass/blob/master/molmass.py
 
 import sys
-from Chemistry.elements import elements
+from elements import elements
 
 open_brackets = ["(", "[", "{"]
 close_brackets = ["}", "]", ")"]
 
 
 def calc_mass(instr):
-    """Calculates the mass of a molecule from a molecular formula
-    >>> calc_mass("H2O")
-    {H: 2, O: 1}
-    18.0148
-    HexaaquaIron(II)
-    >>> calc_mass("Fe(H2O)6")
-    {H: 12, O: 6, Fe: 1}
-    163.9358
-    Tris(ethylenediamine)nickel(II) chloride
-    >>> calc_mass("Ni(NH2-CH2-CH2-NH2)3Cl2")
-    {H: 24, C: 6, N: 6, Cl: 2, Ni: 1}
-    309.9136
-    """
-
     atom = {}
     i = 0
 
@@ -123,3 +109,4 @@ if __name__ == "__main__":
 
     doctest.testmod()
     main()
+# End of cited code
