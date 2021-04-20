@@ -22,25 +22,27 @@ def DA(command):
         if desired_unit == 'mol':
             final_result = desired_mol
             sigfig = find_sigfigs(command[2])
-            final_result_sigfig = round(final_result, sigfig - int(math.floor(math.log10(abs(final_result)))) - 1)
-            number = f'{final_result_sigfig:.2f}'
-            print(number[-1])
-            if number[-1] == "0":
-                return f'{final_result_sigfig:.2f}'
-            else:
-                return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
+            #final_result_sigfig = round(final_result, sigfig - int(math.floor(math.log10(abs(final_result)))) - 1)
+            #number = f'{final_result_sigfig:.2f}'
+            #print(number[-1])
+            #if number[-1] == "0":
+                #return f'{final_result_sigfig:.2f}'
+            #else:
+                #return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
+            return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
 
         elif desired_unit == 'g':
             final_result = desired_mol * molarmass.calc_mass(desired_element)
             sigfig = find_sigfigs(command[2])
-            print(final_result)
-            final_result_sigfig = round(final_result, sigfig - int(math.floor(math.log10(abs(final_result)))) - 1)
-            number = f'{final_result_sigfig:.2f}'
-            print(number[-1])
-            if number[-1] == "0":
-                return f'{final_result_sigfig:.2f}'
-            else:
-                return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
+            #print(final_result)
+            #final_result_sigfig = round(final_result, sigfig - int(math.floor(math.log10(abs(final_result)))) - 1)
+            #number = f'{final_result_sigfig:.2f}'
+            #print(number[-1])
+            #if number[-1] == "0":
+                #return f'{final_result_sigfig:.2f}'
+            #else:
+                #return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
+            str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
 
 
 """
