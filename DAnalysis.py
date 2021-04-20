@@ -29,7 +29,9 @@ def DA(command):
                 #return f'{final_result_sigfig:.2f}'
             #else:
                 #return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
-            return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
+            #return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
+            print(final_result)
+            return final_result
 
         elif desired_unit == 'g':
             final_result = desired_mol * molarmass.calc_mass(desired_element)
@@ -42,7 +44,9 @@ def DA(command):
                 #return f'{final_result_sigfig:.2f}'
             #else:
                 #return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
-            str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
+            #str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
+            print(final_result)
+            return final_result
 
 
 """

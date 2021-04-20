@@ -29,4 +29,4 @@ async def on_message(message):
             await message.channel.send("Invalid Command")
 
 
-client.run(os.environ['RICHARD_TOKEN'])  # Token
+client.run('ODMxMDE1MjI2MjY2MDkxNTMx.YHPFPQ.0MVbDdfS1Hg6IGNvq9tOREz50xE')  # Token
