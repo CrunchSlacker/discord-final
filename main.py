@@ -13,27 +13,17 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.author == client.user:
-        return
 
-    # If discord message begins with -e, then execute molar mass / DA command
     if message.content.startswith('-e'):
-        command = message.content.split()  # Splits input into a list. Each word is an element in the list
+        command = message.content.split()
 
-        # Calculates molar mass and sends to user
         if command[1] == "molarM":
-            embed_molar_m = discord.Embed(title=str(command[2]) + " molar mass:",
-                                          description=str(round(molarmass.calc_mass(command[2]), 2)),
-                                          color=0x3498db)
+          embedMolarM = discord.Embed(title=str(command[2]) + " のモル質量:", description=str(round(molarmass.calc_mass(command[2]), 2)), color=0x3498db)
+          await message.channel.send(embed = embedMolarM)
 
-            await message.channel.send(embed=embed_molar_m)
-
-        # Calculates DA of specified elements and sends to user
         elif command[1] == "DA":
-            da_embed_title = command[2] + command[3] + " of " + command[4] + " to " + command[-1] + "(" + command[
-                -2] + ")"
-            embed_da = discord.Embed(title=da_embed_title, description=DAnalysis.DA(command), colour=0x3498db)
-            await message.channel.send(embed=embed_da)
+          embedDA = discord.Embed(title="単位変換:", description=str(DAnalysis.DA(command)),color=0x3498db)
+          await message.channel.send(embed = embedDA)
 
         else:
             await message.channel.send("Invalid Command")
