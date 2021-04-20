@@ -17,6 +17,7 @@ def DA(command):
 
     if ":" in command[5]:
         ratio = command[5].split(':')
+
         desired_mol = float(starting_mol) * (int(ratio[1]) / int(ratio[0]))
 
         if desired_unit == 'mol':
