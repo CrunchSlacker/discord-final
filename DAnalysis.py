@@ -1,6 +1,7 @@
 import math
-import molarmass
+
 import Sfig
+from Chemistry import molarmass
 
 
 def DA(command):

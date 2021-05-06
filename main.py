@@ -1,7 +1,8 @@
 import discord
-import molarmass
 import DAnalysis
 import os
+
+from Chemistry import molarmass
 
 client = discord.Client()  # Connects with discord
 
@@ -18,15 +19,16 @@ async def on_message(message):
         command = message.content.split()
 
         if command[1] == "molarM":
-          embedMolarM = discord.Embed(title=str(command[2]) + " のモル質量:", description=str(round(molarmass.calc_mass(command[2]), 2)), color=0x3498db)
-          await message.channel.send(embed = embedMolarM)
+            embedMolarM = discord.Embed(title=str(command[2]) + " のモル質量:", description=str(round(
+            molarmass.calc_mass(command[2]), 2)), color=0x3498db)
+            await message.channel.send(embed = embedMolarM)
 
         elif command[1] == "DA":
-          embedDA = discord.Embed(title="単位変換:", description=str(DAnalysis.DA(command)),color=0x3498db)
-          await message.channel.send(embed = embedDA)
+            embedDA = discord.Embed(title="単位変換:", description=str(DAnalysis.DA(command)), color=0x3498db)
+            await message.channel.send(embed = embedDA)
 
         else:
             await message.channel.send("Invalid Command")
 
 
-client.run('ODMxMDE1MjI2MjY2MDkxNTMx.YHPFPQ.0MVbDdfS1Hg6IGNvq9tOREz50xE')  # Token
+client.run(os.environ['RICHARD_TOKEN'])  # Token
