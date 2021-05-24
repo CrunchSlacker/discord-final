@@ -14,17 +14,24 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-
     command = message.content.split()
+
+    if command[0] == "-option":
+        optionsList = discord.Embed(title="Options", description=str("Molar Mass Calculator: \n-molar ["
+                                                                     "element/compound] \n ex. -molar H2SO4 \n\n "
+                                                                     "Dimensional Analysis: \n "
+                                                                     " -DA [amount] [unit] [e/c] [m ratio] [resulting "
+                                                                     "unit] [e/c] \n ex. -DA 12.5 g Cu2S 1:2 g Cu"), color=0x3498db)
+        await message.channel.send(embed=optionsList)
 
     if command[0] == "-molar":
         embedMolarM = discord.Embed(title=str(command[1]) + " のモル質量:", description=str(round(
-        molarmass.calc_mass(command[1]), 2)), color=0x3498db)
-        await message.channel.send(embed = embedMolarM)
+            molarmass.calc_mass(command[1]), 2)), color=0x3498db)
+        await message.channel.send(embed=embedMolarM)
 
     elif command[0] == "-DA":
         embedDA = discord.Embed(title="単位変換:", description=str(DAnalysis.DA(command)), color=0x3498db)
-        await message.channel.send(embed = embedDA)
+        await message.channel.send(embed=embedDA)
 
 
-client.run("ODMxMDE1MjI2MjY2MDkxNTMx.YHPFPQ.J5kobr2fp6Kj9Wz5hZj7QMzp5WA")  # Token
+client.run(os.environ['RICHARD_TOKEN'])  # Token
