@@ -3,6 +3,7 @@ import math
 import Sfig
 from Chemistry import molarmass
 
+#-DA 5.95 g CO2 1:1 g PbCO3
 
 def DA(command):
     starting_unit = command[2]
@@ -12,7 +13,8 @@ def DA(command):
     desired_element = command[-1]
 
     if starting_unit == 'g':  # Change grams to mols
-        starting_mol = round(float(command[1]) / molarmass.calc_mass(command[3]), 2)
+        starting_mol = float(command[1]) / molarmass.calc_mass(command[3])
+        print(starting_mol)
     elif starting_unit == 'mol':
         starting_mol = command[1]
 

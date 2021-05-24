@@ -34,4 +34,4 @@ async def on_message(message):
         await message.channel.send(embed=embedDA)
 
 
-client.run(os.environ['RICHARD_TOKEN'])  # Token
+client.run('ODMxMDE1MjI2MjY2MDkxNTMx.YHPFPQ.J5kobr2fp6Kj9Wz5hZj7QMzp5WA')  # Token
