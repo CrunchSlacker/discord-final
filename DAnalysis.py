@@ -5,25 +5,25 @@ from Chemistry import molarmass
 
 
 def DA(command):
-    starting_unit = command[3]
-    starting_mol = command[2]
+    starting_unit = command[2]
+    starting_mol = command[1]
 
     desired_unit = command[-2]
     desired_element = command[-1]
 
     if starting_unit == 'g':  # Change grams to mols
-        starting_mol = round(float(command[2]) / molarmass.calc_mass(command[4]), 2)
+        starting_mol = round(float(command[1]) / molarmass.calc_mass(command[3]), 2)
     elif starting_unit == 'mol':
-        starting_mol = command[2]
+        starting_mol = command[1]
 
-    if ":" in command[5]:
-        ratio = command[5].split(':')
+    if ":" in command[4]:
+        ratio = command[4].split(':')
 
         desired_mol = float(starting_mol) * (int(ratio[1]) / int(ratio[0]))
 
         if desired_unit == 'mol':
             final_result = desired_mol
-            sigfig = find_sigfigs(command[2])
+            sigfig = find_sigfigs(command[1])
             #final_result_sigfig = round(final_result, sigfig - int(math.floor(math.log10(abs(final_result)))) - 1)
             #number = f'{final_result_sigfig:.2f}'
             #print(number[-1])
@@ -37,7 +37,7 @@ def DA(command):
 
         elif desired_unit == 'g':
             final_result = desired_mol * molarmass.calc_mass(desired_element)
-            sigfig = find_sigfigs(command[2])
+            sigfig = find_sigfigs(command[1])
             #print(final_result)
             #final_result_sigfig = round(final_result, sigfig - int(math.floor(math.log10(abs(final_result)))) - 1)
             #number = f'{final_result_sigfig:.2f}'

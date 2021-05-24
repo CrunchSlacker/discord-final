@@ -15,20 +15,16 @@ async def on_ready():
 @client.event
 async def on_message(message):
 
-    if message.content.startswith('-e'):
-        command = message.content.split()
+    command = message.content.split()
 
-        if command[1] == "molarM":
-            embedMolarM = discord.Embed(title=str(command[2]) + " のモル質量:", description=str(round(
-            molarmass.calc_mass(command[2]), 2)), color=0x3498db)
-            await message.channel.send(embed = embedMolarM)
+    if command[0] == "-molar":
+        embedMolarM = discord.Embed(title=str(command[1]) + " のモル質量:", description=str(round(
+        molarmass.calc_mass(command[1]), 2)), color=0x3498db)
+        await message.channel.send(embed = embedMolarM)
 
-        elif command[1] == "DA":
-            embedDA = discord.Embed(title="単位変換:", description=str(DAnalysis.DA(command)), color=0x3498db)
-            await message.channel.send(embed = embedDA)
-
-        else:
-            await message.channel.send("Invalid Command")
+    elif command[0] == "-DA":
+        embedDA = discord.Embed(title="単位変換:", description=str(DAnalysis.DA(command)), color=0x3498db)
+        await message.channel.send(embed = embedDA)
 
 
-client.run(os.environ['RICHARD_TOKEN'])  # Token
+client.run("ODMxMDE1MjI2MjY2MDkxNTMx.YHPFPQ.J5kobr2fp6Kj9Wz5hZj7QMzp5WA")  # Token
