@@ -37,7 +37,7 @@ async def on_message(message):
 
     elif command[0] == "-k":
         kelvin = float(command[1]) + 273
-        embedKelvin = discord.Embed(title="Celsius to Kelvin Conversion", description=str(kelvin), color=0x3498db)
+        embedKelvin = discord.Embed(title="ケルビンから摂氏へ換算:", description=str(kelvin), color=0x3498db)
         await message.channel.send(embed=embedKelvin)
 
 
