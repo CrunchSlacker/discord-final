@@ -21,7 +21,9 @@ async def on_message(message):
                                                                      "element/compound] \n ex. -molar H2SO4 \n\n "
                                                                      "Dimensional Analysis: \n "
                                                                      " -DA [amount] [unit] [e/c] [m ratio] [resulting "
-                                                                     "unit] [e/c] \n ex. -DA 12.5 g Cu2S 1:2 g Cu"), color=0x3498db)
+                                                                     "unit] [e/c] \n ex. -DA 12.5 g Cu2S 1:2 g Cu "
+                                                                     "\n\n Celsius to Kelvin Conversion: \n -k ["
+                                                                     "celsius] \n ex. -k 69.8"), color=0x3498db)
         await message.channel.send(embed=optionsList)
 
     if command[0] == "-molar":
@@ -32,6 +34,11 @@ async def on_message(message):
     elif command[0] == "-DA":
         embedDA = discord.Embed(title="単位変換:", description=str(DAnalysis.DA(command)), color=0x3498db)
         await message.channel.send(embed=embedDA)
+
+    elif command[0] == "-k":
+        kelvin = float(command[1]) + 273
+        embedKelvin = discord.Embed(title="Celsius to Kelvin Conversion", description=str(kelvin), color=0x3498db)
+        await message.channel.send(embed=embedKelvin)
 
 
 client.run('ODMxMDE1MjI2MjY2MDkxNTMx.YHPFPQ.J5kobr2fp6Kj9Wz5hZj7QMzp5WA')  # Token
