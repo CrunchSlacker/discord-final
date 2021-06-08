@@ -1,5 +1,6 @@
 import discord
 import DAnalysis
+import physics
 import os
 
 from Chemistry import molarmass
@@ -31,7 +32,7 @@ async def on_message(message):
             molarmass.calc_mass(command[1]), 2)), color=0x3498db)
         await message.channel.send(embed=embedMolarM)
 
-    elif command[0] == "-DA":
+    elif command[0] == "-da":
         embedDA = discord.Embed(title="単位変換:", description=str(DAnalysis.DA(command)), color=0x3498db)
         await message.channel.send(embed=embedDA)
 
@@ -39,6 +40,10 @@ async def on_message(message):
         kelvin = float(command[1]) + 273
         embedKelvin = discord.Embed(title="ケルビンから摂氏へ換算:", description=str(kelvin), color=0x3498db)
         await message.channel.send(embed=embedKelvin)
+
+    elif command[0] == "-kinematics":
+        embedKinematics = discord.Embed(title="運動方程式:", description=str(physics.equation(command)), color=0x3498db)
+        await message.channel.send(embed=embedKinematics)
 
 
 client.run('ODMxMDE1MjI2MjY2MDkxNTMx.YHPFPQ.J5kobr2fp6Kj9Wz5hZj7QMzp5WA')  # Token

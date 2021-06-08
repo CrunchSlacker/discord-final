@@ -1,9 +1,5 @@
-import math
-
-import Sfig
 from Chemistry import molarmass
 
-#-DA 5.95 g CO2 1:1 g PbCO3
 
 def DA(command):
     starting_unit = command[2]
@@ -14,43 +10,68 @@ def DA(command):
 
     if starting_unit == 'g':  # Change grams to mols
         starting_mol = float(command[1]) / molarmass.calc_mass(command[3])
-        print(starting_mol)
+
     elif starting_unit == 'mol':
         starting_mol = command[1]
 
     if ":" in command[4]:
-        ratio = command[4].split(':')
+        if "%" in command[5]:
 
+            percent = command[5]
+            percent = percent[:-1]
+            percent_final = float(percent) * 0.01
+
+            ratio = command[4].split(':')
+            desired_mol = float(starting_mol) * (int(ratio[1]) / int(ratio[0]))
+
+            if desired_unit == 'mol':
+                final_result = desired_mol
+                return final_result * percent_final
+
+            elif desired_unit == 'g':
+                final_result = desired_mol * molarmass.calc_mass(desired_element)
+                return final_result * percent_final
+
+    if ":" not in command[4]:
+        if "%" not in command[4]:
+            desired_mol = float(starting_mol)
+
+            if desired_unit == 'mol':
+                final_result = desired_mol
+                return final_result
+
+            elif desired_unit == 'g':
+                final_result = desired_mol * molarmass.calc_mass(desired_element)
+                return final_result
+
+    if ":" in command[4]:
+        ratio = command[4].split(':')
         desired_mol = float(starting_mol) * (int(ratio[1]) / int(ratio[0]))
 
         if desired_unit == 'mol':
             final_result = desired_mol
-            sigfig = find_sigfigs(command[1])
-            #final_result_sigfig = round(final_result, sigfig - int(math.floor(math.log10(abs(final_result)))) - 1)
-            #number = f'{final_result_sigfig:.2f}'
-            #print(number[-1])
-            #if number[-1] == "0":
-                #return f'{final_result_sigfig:.2f}'
-            #else:
-                #return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
-            #return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
-            print(final_result)
             return final_result
 
         elif desired_unit == 'g':
             final_result = desired_mol * molarmass.calc_mass(desired_element)
-            sigfig = find_sigfigs(command[1])
-            #print(final_result)
-            #final_result_sigfig = round(final_result, sigfig - int(math.floor(math.log10(abs(final_result)))) - 1)
-            #number = f'{final_result_sigfig:.2f}'
-            #print(number[-1])
-            #if number[-1] == "0":
-                #return f'{final_result_sigfig:.2f}'
-            #else:
-                #return str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
-            #str(Sfig.SF(final_result, sigfig)) + desired_unit + " of " + desired_element
-            print(final_result)
             return final_result
+
+    if "%" in command[4]:
+        percent = command[4]
+        percent = percent[:-1]
+        percent_final = float(percent) * 0.01
+
+        desired_mol = float(starting_mol)
+
+        if desired_unit == 'mol':
+            final_result = desired_mol
+
+            return final_result * percent_final
+
+        elif desired_unit == 'g':
+            final_result = desired_mol * molarmass.calc_mass(desired_element)
+
+            return final_result * percent_final
 
 
 """
