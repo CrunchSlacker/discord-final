@@ -1,4 +1,5 @@
 from Chemistry import molarmass
+import math
 
 
 def DA(command):
@@ -8,6 +9,8 @@ def DA(command):
     desired_unit = command[-2]
     desired_element = command[-1]
 
+    sigfigs = find_sigfigs(str(starting_mol))
+
     if starting_unit == 'g':  # Change grams to mols
         starting_mol = float(command[1]) / molarmass.calc_mass(command[3])
 
@@ -16,7 +19,6 @@ def DA(command):
 
     if ":" in command[4]:
         if "%" in command[5]:
-
             percent = command[5]
             percent = percent[:-1]
             percent_final = float(percent) * 0.01
@@ -26,11 +28,17 @@ def DA(command):
 
             if desired_unit == 'mol':
                 final_result = desired_mol
-                return final_result * percent_final
+                percent_result = final_result * percent_final
+                final_result_sigfig = round(percent_result, sigfigs - int(math.floor(math.log10(abs(percent_result)))) - 1)
+                print(percent_result)
+                return final_result_sigfig
 
             elif desired_unit == 'g':
                 final_result = desired_mol * molarmass.calc_mass(desired_element)
-                return final_result * percent_final
+                percent_result = final_result * percent_final
+                final_result_sigfig = round(percent_result, sigfigs - int(math.floor(math.log10(abs(percent_result)))) - 1)
+                print(percent_result)
+                return final_result_sigfig
 
     if ":" not in command[4]:
         if "%" not in command[4]:
@@ -38,11 +46,15 @@ def DA(command):
 
             if desired_unit == 'mol':
                 final_result = desired_mol
-                return final_result
+                final_result_sigfig = round(final_result, sigfigs - int(math.floor(math.log10(abs(final_result)))) - 1)
+                print(final_result)
+                return final_result_sigfig
 
             elif desired_unit == 'g':
                 final_result = desired_mol * molarmass.calc_mass(desired_element)
-                return final_result
+                final_result_sigfig = round(final_result, sigfigs - int(math.floor(math.log10(abs(final_result)))) - 1)
+                print(final_result)
+                return final_result_sigfig
 
     if ":" in command[4]:
         ratio = command[4].split(':')
@@ -50,11 +62,13 @@ def DA(command):
 
         if desired_unit == 'mol':
             final_result = desired_mol
-            return final_result
+            final_result_sigfig = round(final_result, sigfigs - int(math.floor(math.log10(abs(final_result)))) - 1)
+            return final_result_sigfig
 
         elif desired_unit == 'g':
             final_result = desired_mol * molarmass.calc_mass(desired_element)
-            return final_result
+            final_result_sigfig = round(final_result, sigfigs - int(math.floor(math.log10(abs(final_result)))) - 1)
+            return final_result_sigfig
 
     if "%" in command[4]:
         percent = command[4]
@@ -65,13 +79,16 @@ def DA(command):
 
         if desired_unit == 'mol':
             final_result = desired_mol
-
-            return final_result * percent_final
+            percent_result = final_result * percent_final
+            final_result_sigfig = round(percent_result, sigfigs - int(math.floor(math.log10(abs(percent_result)))) - 1)
+            return final_result_sigfig
 
         elif desired_unit == 'g':
             final_result = desired_mol * molarmass.calc_mass(desired_element)
+            percent_result = final_result * percent_final
+            final_result_sigfig = round(percent_result, sigfigs - int(math.floor(math.log10(abs(percent_result)))) - 1)
+            return final_result_sigfig
 
-            return final_result * percent_final
 
 
 """
