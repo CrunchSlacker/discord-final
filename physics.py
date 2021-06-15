@@ -5,7 +5,7 @@ class AssignVar:  # Figure this out BOY
     def __init__(self, command):
         self.command = command
 
-    def get_var(self):
+    def return_var(self, elem_num):
         elem_one = ""
         elem_two = ""
         elem_three = ""
@@ -14,7 +14,6 @@ class AssignVar:  # Figure this out BOY
         index = -1
         for element in self.command:
             index = index + 1
-
             if "=" in element:
                 if index == 1:
                     elem_one = self.command[index].split('=')
@@ -23,28 +22,25 @@ class AssignVar:  # Figure this out BOY
                 elif index == 3:
                     elem_three = self.command[index].split('=')
                 elif index == 4:
-                    elem_four = self.command[index].split('=')  #
+                    elem_four = self.command[index].split('=')
+
+        if elem_num == 1:
+            return elem_one
+        elif elem_num == 2:
+            return elem_two
+        elif elem_num == 3:
+            return elem_three
+        elif elem_num == 4:
+            return elem_four
 
 
 def no_x(command):
-    vf_elem = ""
-    vi_elem = ""
-    a_elem = ""
-    t_elem = ""
+    elements = AssignVar(command)
 
-    index = -1
-    for element in command:
-        index = index + 1
-
-        if "=" in element:
-            if index == 1:
-                vf_elem = command[index].split('=')
-            elif index == 2:
-                vi_elem = command[index].split('=')
-            elif index == 3:
-                a_elem = command[index].split('=')
-            elif index == 4:
-                t_elem = command[index].split('=')
+    vf_elem = elements.return_var(1)
+    vi_elem = elements.return_var(2)
+    a_elem = elements.return_var(3)
+    t_elem = elements.return_var(4)
 
     vf_val = vf_elem[1]
     vi_val = vi_elem[1]
@@ -66,24 +62,12 @@ def no_x(command):
 
 
 def no_a(command):
-    x_elem = ""
-    vt_elem = ""
-    v0_elem = ""
-    t_elem = ""
+    elements = AssignVar(command)
 
-    index = -1
-    for element in command:
-        index = index + 1
-
-        if "=" in element:
-            if index == 1:
-                x_elem = command[index].split('=')
-            elif index == 2:
-                vt_elem = command[index].split('=')
-            elif index == 3:
-                v0_elem = command[index].split('=')
-            elif index == 4:
-                t_elem = command[index].split('=')
+    x_elem = elements.return_var(1)
+    vt_elem = elements.return_var(2)
+    v0_elem = elements.return_var(3)
+    t_elem = elements.return_var(4)
 
     x_val = x_elem[1]
     vt_val = vt_elem[1]
@@ -105,24 +89,12 @@ def no_a(command):
 
 
 def no_vf(command):
-    x_elem = ""
-    vo_elem = ""
-    t_elem = ""
-    a_elem = ""
+    elements = AssignVar(command)
 
-    index = -1
-    for element in command:
-        index = index + 1
-
-        if "=" in element:
-            if index == 1:
-                x_elem = command[index].split('=')
-            elif index == 2:
-                vo_elem = command[index].split('=')
-            elif index == 3:
-                t_elem = command[index].split('=')
-            elif index == 4:
-                a_elem = command[index].split('=')
+    x_elem = elements.return_var(1)
+    vo_elem = elements.return_var(2)
+    t_elem = elements.return_var(3)
+    a_elem = elements.return_var(4)
 
     x_val = x_elem[1]
     vo_val = vo_elem[1]
@@ -144,24 +116,12 @@ def no_vf(command):
 
 
 def no_t(command):
-    a_elem = ""
-    x_elem = ""
-    vt_elem = ""
-    v0_elem = ""
+    elements = AssignVar(command)
 
-    index = -1
-    for element in command:
-        index = index + 1
-
-        if "=" in element:
-            if index == 1:
-                a_elem = command[index].split('=')
-            elif index == 2:
-                x_elem = command[index].split('=')
-            elif index == 3:
-                vt_elem = command[index].split('=')
-            elif index == 4:
-                v0_elem = command[index].split('=')
+    a_elem = elements.return_var(1)
+    x_elem = elements.return_var(2)
+    vt_elem = elements.return_var(3)
+    v0_elem = elements.return_var(4)
 
     a_val = a_elem[1]
     x_val = x_elem[1]

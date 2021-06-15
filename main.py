@@ -46,6 +46,10 @@ async def on_message(message):
                                                                          "\n\n Celsius to Kelvin Conversion: \n -k ["
                                                                          "celsius] \n ex. -k 69.8"), color=0x3498db)
             await message.channel.send(embed=optionsList)
+        elif command[0] == "-pp":
+            embedPP = discord.Embed(title="運動方程式:", description=str(physics.solve_equation(command)),
+                                            color=0x3498db)
+            await message.channel.send(embed=embedPP)
     except IndexError:
         pass
 
