@@ -1,8 +1,8 @@
 import discord
 import DAnalysis
 import physics
-import os
-
+import random
+import benis
 from Chemistry import molarmass
 
 client = discord.Client()  # Connects with discord
@@ -46,12 +46,13 @@ async def on_message(message):
                                                                          "\n\n Celsius to Kelvin Conversion: \n -k ["
                                                                          "celsius] \n ex. -k 69.8"), color=0x3498db)
             await message.channel.send(embed=optionsList)
-        elif command[0] == "-pp":
-            embedPP = discord.Embed(title="運動方程式:", description=str(physics.solve_equation(command)),
-                                            color=0x3498db)
-            await message.channel.send(embed=embedPP)
+
+        elif command[0] == "-benis":
+            random_num = random.randint(0, 4)
+            await message.channel.send(benis.gif_list[random_num])
+
     except IndexError:
         pass
 
 
-client.run('ODMxMDE1MjI2MjY2MDkxNTMx.YHPFPQ.J5kobr2fp6Kj9Wz5hZj7QMzp5WA')  # Token
+client.run('ODMxMTk3Nzc1MDg5MzY5MTA1.YHRvQA.hraUmwO2yoVfG8ekKh1NwAb4-ek')  # Token
