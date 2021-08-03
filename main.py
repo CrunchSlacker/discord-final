@@ -19,9 +19,13 @@ async def on_message(message):
 
     try:
         if command[0] == "-molar":
-            embedMolarM = discord.Embed(title=str(command[1]) + " のモル質量:", description=str(round(
-                molarmass.calc_mass(command[1]), 2)), color=0x3498db)
-            await message.channel.send(embed=embedMolarM)
+            try:
+                embedMolarM = discord.Embed(title=str(command[1]) + " のモル質量:", description=str(round(
+                    molarmass.calc_mass(command[1]), 2)), color=0x3498db)
+                await message.channel.send(embed=embedMolarM)
+            except SystemExit:
+                unknown_elem = discord.Embed(title=str("エラー、やり直してください"), color=0x3498db)
+                await message.channel.send(embed=unknown_elem)
 
         elif command[0] == "-da":
             embedDA = discord.Embed(title="単位変換:", description=str(DAnalysis.DA(command)), color=0x3498db)
