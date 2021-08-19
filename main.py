@@ -41,14 +41,11 @@ async def on_message(message):
                                             color=0x3498db)
             await message.channel.send(embed=embedKinematics)
 
-        elif command[0] == "-option":
-            optionsList = discord.Embed(title="Options", description=str("Molar Mass Calculator: \n-molar ["
-                                                                         "element/compound] \n ex. -molar H2SO4 \n\n "
-                                                                         "Dimensional Analysis: \n "
-                                                                         " -DA [amount] [unit] [e/c] [m ratio] [resulting "
-                                                                         "unit] [e/c] \n ex. -DA 12.5 g Cu2S 1:2 g Cu "
-                                                                         "\n\n Celsius to Kelvin Conversion: \n -k ["
-                                                                         "celsius] \n ex. -k 69.8"), color=0x3498db)
+        elif command[0] == "-options":
+            optionsList = discord.Embed(title="オプション", description=str("モル質量電卓\n -molar [元素/化合物]\n 例: -molar H2SO4\n\n"
+                                                                       "単位変換\n -da [番号] [測定単位] [化合物] [モル比] [測定単位] [化合物]\n 例: -da 12.5 g Cu2S 1:2 g Cu\n\n"
+                                                                       "ケルビンから摂氏へ換算\n -k [摂氏]\n 例: -k 72.3\n"), color=0x3498db)
+
             await message.channel.send(embed=optionsList)
 
         elif command[0] == "-benis":
